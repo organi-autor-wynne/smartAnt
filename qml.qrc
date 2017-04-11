@@ -3,10 +3,6 @@
         <file>main.qml</file>
         <file>yuv2rgb.vert</file>
         <file>yuv2rgb.frag</file>
-        <file>point.png</file>
-        <file>bg1.png</file>
-        <file>bg.png</file>
-        <file>bg2.png</file>
         <file>BebasNeue.otf</file>
         <file>images/19_35.png</file>
         <file>images/bottom.png</file>
@@ -23,12 +19,9 @@
         <file>images/A.png</file>
         <file>images/yellow.png</file>
         <file>images/V.png</file>
-        <file>images/125.png</file>
         <file>images/km_h.png</file>
         <file>images/readyblack.png</file>
         <file>images/readygreen.png</file>
-        <file>images/2..png</file>
-        <file>images/5.png</file>
         <file>images/1000_rpm.png</file>
         <file>images/scale_speed.png</file>
         <file>images/pointer_speed.png</file>
@@ -45,8 +38,6 @@
         <file>images/157585.png</file>
         <file>images/254.5.png</file>
         <file>images/248.png</file>
-        <file>images/zuo.png</file>
-        <file>images/you.png</file>
         <file>images/shuguang.png</file>
         <file>images/shu.png</file>
         <file>images/luxian.png</file>

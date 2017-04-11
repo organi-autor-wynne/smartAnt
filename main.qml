@@ -223,12 +223,7 @@ Rectangle {
             x: 249
             y: 381
             source: "qrc:/images/km_h.png"
-        }
-        //    Image {
-        //        x: 118
-        //        y: 358
-        //        source: "qrc:/images/125.png"
-        //    }
+		}
         Item {
             x: 118
             y: 358
@@ -251,17 +246,7 @@ Rectangle {
             y: 382
             opacity: 0.2
             source: "qrc:/images/1000_rpm.png"
-        }
-        //    Image {
-        //        x: 510
-        //        y: 359
-        //        source: "qrc:/images/2..png"
-        //    }
-        //    Image {
-        //        x: 577
-        //        y: 372
-        //        source: "qrc:/images/5.png"
-        //    }
+		}
         Item {
             x: 510
             y: 359
@@ -294,8 +279,7 @@ Rectangle {
             transform: Rotation {
                 id: speed_valueRotation
                 origin.x: -24 - speed_value.x
-                origin.y: 226 - speed_value.y
-                //angle: 98//-25
+				origin.y: 226 - speed_value.y
                 angle: 98 - 123 * (textSpeed / 220)
             }
         }
@@ -349,67 +333,10 @@ Rectangle {
 
     }
 
-    // lun hui yan , fang qi
-    //    Item {
-    //        id: yj
-    //        width: 800
-    //        height: 350
-    //        scale: 1.0
-    //        anchors.centerIn: parent.Center
-
-    //        Image {
-    //            id:zuo
-    //            x: 214
-    //            y: 173+53
-    //            //        x: 344
-    //            //        y: 45
-    //            //        x: -53
-    //            //        y: 45
-    //            opacity: 0.0
-    //            source: "qrc:/images/zuo.png"
-    //            //        source: "qrc:/images/scale_speed.png"
-    //            transform: Rotation {
-    //                id: zuoZhuan
-    //                origin.x: 396.5 /*397.5*/ - zuo.x
-    //                origin.y: 226 /*226*/ - zuo.y
-    //                axis { x: 1; y: 0; z: 0 }
-    //                angle: 90
-    //            }
-    //            //        transform: Rotation {
-    //            //            origin.x: 397.5 - zuo.x;
-    //            //            origin.y: 226 - zuo.y;
-    //            //            axis { x: 0; y: 1; z: 0 }
-    //            //            angle: 180
-    //            //        }
-    //        }
-    //        Image {
-    //            id:you
-    //            x: 215
-    //            y: 61
-    //            //        x: 232
-    //            //        y: 45
-    //            //        x: 635
-    //            //        y: 45
-    //            opacity: 0.0
-    //            source: "qrc:/images/you.png"
-    //            //        source: "qrc:/images/scale_rpm.png"
-    //            transform: Rotation {
-    //                id: youZhuan
-    //                origin.x: 398 - you.x
-    //                origin.y: 226 - you.y
-    //                axis { x: 1; y: 0; z: 0 }
-    //                angle: -90
-    //            }
-    //        }
-    //    }
     Image {
-        id:zuo1
-        //                x: 214
-        //                y: 173
-        //        x: 344
+		id:zuo1
         y: 45
-        x: -53
-        //                y: 45
+		x: -53
         opacity: 0.0
         source: "qrc:/images/scale_speed.png"
         transform: Rotation {
@@ -420,13 +347,9 @@ Rectangle {
         }
     }
     Image {
-        id:you1
-        //        x: 215
-        //        y: 61
-        //                x: 232
+		id:you1
         y: 45
-        x: 635
-        //                y: 45
+		x: 635
         opacity: 0.0
         source: "qrc:/images/scale_rpm.png"
         transform: Rotation {
@@ -511,13 +434,7 @@ Rectangle {
                 NumberAnimation {target: yys; property: "opacity"; to: 1; duration: 1000 }
                 NumberAnimation {target: yyx; property: "opacity"; to: 1; duration: 1000 }
                 NumberAnimation {target: yys; property: "x"; from: -800; to: 0; duration: 1000 }
-                NumberAnimation {target: yyx; property: "x"; from: 800; to: 0; duration: 1000 }
-//                NumberAnimation {target: xian; property: "opacity"; from: 0.0; to: 1.0; duration: 100 }
-//                NumberAnimation {target: xian; property: "xOfset"; from: -500; to: 150; duration: 2000 }
-//                NumberAnimation {target: xianZhuan; property: "angle"; from: 1000; to: 0; duration: 2000 }
-//                NumberAnimation {target: xian1; property: "opacity"; from: 0.0; to: 1.0; duration: 100 }
-//                NumberAnimation {target: xian1; property: "xOfset"; from: 500; to: -150; duration: 2000 }
-//                NumberAnimation {target: xianZhuan1; property: "angle"; from: 1000; to: 0; duration: 2000 }
+				NumberAnimation {target: yyx; property: "x"; from: 800; to: 0; duration: 1000 }
                 NumberAnimation {target: shuguang; properties: "opacity"; to: 1.0 ; duration: 1000 }
                 NumberAnimation {target: luguang; properties: "opacity"; to: 1.0 ; duration: 1000 }
             }
@@ -719,210 +636,5 @@ Rectangle {
 			}
 		}
 
-    }
-
-    /*
-    Image {
-        id: bg2
-        x: 93
-        y: -1
-        opacity: 0.0
-        source: "qrc:/bg2.png"
-    }
-    Image {
-        id: bg
-        x: -1
-        y: 17
-        opacity: 1.0
-        source: "qrc:/bg.png"
-    }
-    Image {
-        id: bg1
-        x: 66
-        y: 0
-        opacity: 1.0
-        source: "qrc:/bg1.png"
-    }
-    Image {
-        id: point
-        x: 100
-        y: 340
-        opacity: 1.0
-        source: "qrc:/point.png"
-        transform: Rotation {
-            id: pointRotation
-            origin.x: 399.5 - point.x; origin.y: 311 - point.y;
-            angle: 0//216
-        }
-    }
-
-    FontLoader{
-        id: font;
-        source: "qrc:/BebasNeue.otf"
-    }
-    property int textValue: 0
-    Text {
-        id: speed
-        font.pointSize:90
-        text: textValue
-        anchors.centerIn: bg1
-        anchors.verticalCenterOffset: 50
-        font.family: font.name
-        color: "white"
-        opacity: 1.0
-    }
-
-    SequentialAnimation {
-        running: true
-
-        ParallelAnimation{
-            SequentialAnimation{
-                NumberAnimation {
-                    target: pointRotation
-                    property: "angle"
-                    duration: 1000
-                    to: 80
-                }
-                NumberAnimation {
-                    target: pointRotation
-                    property: "angle"
-                    duration: 1500
-                    to: 190
-                }
-                NumberAnimation {
-                    target: pointRotation
-                    property: "angle"
-                    duration: 3000
-                    to: 216
-                }
-                NumberAnimation {
-                    target: pointRotation
-                    property: "angle"
-                    duration: 1500
-                    to: 170
-                }
-                NumberAnimation {
-                    target: pointRotation
-                    property: "angle"
-                    duration: 3000
-                    to: 110
-                }
-                NumberAnimation {
-                    target: pointRotation
-                    property: "angle"
-                    duration: 1500
-                    to: 0
-                }
-            }
-            SequentialAnimation{
-                NumberAnimation {
-                    target: main
-                    property: "textValue"
-                    duration: 1000
-                    to: 30
-                }
-                NumberAnimation {
-                    target: main
-                    property: "textValue"
-                    duration: 1500
-                    to: 70
-                }
-                NumberAnimation {
-                    target: main
-                    property: "textValue"
-                    duration: 3000
-                    to: 180
-                }
-                NumberAnimation {
-                    target: main
-                    property: "textValue"
-                    duration: 1500
-                    to: 170
-                }
-                NumberAnimation {
-                    target: main
-                    property: "textValue"
-                    duration: 3000
-                    to: 130
-                }
-                NumberAnimation {
-                    target: main
-                    property: "textValue"
-                    duration: 1500
-                    to: 0
-                }
-            }
-        }
-
-        ParallelAnimation{
-            NumberAnimation {
-                target: bg1
-                property: "opacity"
-                duration: 300
-                to: 0
-            }
-            NumberAnimation {
-                target: point
-                property: "opacity"
-                duration: 300
-                to: 0
-            }
-            NumberAnimation {
-                target:speed
-                property: "opacity"
-                duration: 300
-                to: 0
-            }
-            NumberAnimation {
-                target: bg2
-                property: "opacity"
-                duration: 300
-                to: 1.0
-            }
-            NumberAnimation {
-                target: camera
-                property: "opacity"
-                duration: 300
-                to: 1.0
-            }
-        }
-
-        PauseAnimation {
-            duration: 5000
-        }
-        NumberAnimation {
-            target: camera
-            property: "opacity"
-            duration: 0
-            to: 0.0
-        }
-        ParallelAnimation{
-            NumberAnimation {
-                target: bg1
-                property: "opacity"
-                duration: 300
-                to: 1.0
-            }
-            NumberAnimation {
-                target: point
-                property: "opacity"
-                duration: 300
-                to: 1.0
-            }
-            NumberAnimation {
-                target:speed
-                property: "opacity"
-                duration: 300
-                to: 1.0
-            }
-            NumberAnimation {
-                target: bg2
-                property: "opacity"
-                duration: 300
-                to: 0.0
-            }
-
-        }
-        loops: Animation.Infinite
-    }*/
+	}
 }
