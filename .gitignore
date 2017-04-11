@@ -1,0 +1,13 @@
+*~
+*.swp
+Makefile
+bin/
+*.user*
+build/
+qrc_huatai.cpp
+src/*~
+src/*.swp
+qml/*~
+qml/*.swp
+distense.txt
+*qtquickcompiler*
