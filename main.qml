@@ -77,7 +77,7 @@ Rectangle {
 			id: camera
 			width: 800
 			height: 480
-			play: main.cameraFlag === 1
+			play: true
 			opacity: 0.0
 		}
 
