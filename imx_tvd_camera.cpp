@@ -51,6 +51,13 @@ int IMXTVDCamera::subInitCapture()
         return -1;
     }
 
+	if( id == V4L2_STD_ALL )
+	{
+		timer = new QTimer;
+   		timer->start(1000);
+    		connect(timer,SIGNAL(timeout()),this,SLOT(timer_proc()));
+	}
+
     struct v4l2_crop crop;
     struct v4l2_cropcap cropcap;
     memset(&cropcap, 0, sizeof(cropcap));
@@ -112,4 +119,39 @@ int IMXTVDCamera::subInitCapture()
 void IMXTVDCamera::textureProcess(const uchar *data, int width, int height)
 {
     m_image->uyvy2rgb(data, width, height);
+}
+
+void Camera::timer_proc()
+{
+
+	int err, fd = videodev.fd;
+    vidioc_enuminput(fd);
+ 
+    v4l2_std_id id = 0;
+    if ((err = ioctl(fd, VIDIOC_G_STD, &id)) < 0) {
+        qWarning() << "VIDIOC_G_STD error" << errno;
+        return ;
+    }
+    switch (id) {
+    case V4L2_STD_ALL:
+        qDebug() << "no camera";
+        break;
+    case V4L2_STD_NTSC:
+        qDebug() << "NTSC camera detected";
+        break;
+    case V4L2_STD_PAL:
+        qDebug() << "PAL camera detected";
+        break;
+    default:
+        qDebug() << "unknown std";
+        break;
+    }
+
+    if ((err = ioctl(fd, VIDIOC_S_STD, &id)) < 0) {
+        qWarning() << "VIDIOC_S_STD error" << errno;
+        return ;
+    }
+
+	if( id != V4L2_STD_ALL )
+		timer->stop();
 }
