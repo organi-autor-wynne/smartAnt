@@ -6,7 +6,6 @@
 #include <QWaitCondition>
 
 #include <linux/videodev2.h>
-#include <QTimer>
 
 class ImageStream;
 class CameraTexture;
@@ -30,7 +29,7 @@ public:
 #define PLAY_CHANNEL_0  0
 #define PLAY_CHANNEL_1  1
     int m_playChannel;
-    QTimer *timer;
+    bool m_capture_format;
 	
 signals:
     void imageChanged();
@@ -76,9 +75,6 @@ private:
 
     void updateTexture(const uchar *data, int width, int height);
     virtual void textureProcess(const uchar *data, int width, int height);
-
-public slots:
-    void  timer_proc();
 };
 
 #endif // CAMERA_H

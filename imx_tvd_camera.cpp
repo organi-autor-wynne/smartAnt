@@ -10,7 +10,7 @@ IMXTVDCamera::IMXTVDCamera(QObject *parent)
     : Camera(parent)
 {
     CAPTURE_DEVICE = "/dev/video0";
-    m_image = new ImageStream(720, 576);
+    m_image = new ImageStream(720, 480);//576);
     m_playChannel = PLAY_CHANNEL_0;
 }
 
@@ -19,14 +19,16 @@ int IMXTVDCamera::subInitCapture()
     int err, fd = videodev.fd;
 
     vidioc_enuminput(fd);
+	v4l2_std_id id = 0;
 
+while(1)
+{
     int input = 1;
     if ((err = ioctl(fd, VIDIOC_S_INPUT, &input)) < 0) {
         qWarning() << "VIDIOC_S_INPUT error" << errno;
         return -1;
     }
 
-    v4l2_std_id id = 0;
     if ((err = ioctl(fd, VIDIOC_G_STD, &id)) < 0) {
         qWarning() << "VIDIOC_G_STD error" << errno;
         return -1;
@@ -36,9 +38,11 @@ int IMXTVDCamera::subInitCapture()
         qDebug() << "no camera";
         break;
     case V4L2_STD_NTSC:
+	//m_image = new ImageStream(720, 480);//576);
         qDebug() << "NTSC camera detected";
         break;
     case V4L2_STD_PAL:
+	//m_image = new ImageStream(720, 576);
         qDebug() << "PAL camera detected";
         break;
     default:
@@ -46,17 +50,23 @@ int IMXTVDCamera::subInitCapture()
         break;
     }
 
+	if( id == V4L2_STD_ALL )
+	{
+		 qDebug() << "v4l2 capture null";
+		 m_capture_format = false;
+	}
+	else
+	{
+		 m_capture_format = true;
+		 break;
+	}
+	
+	sleep(1);
+}
     if ((err = ioctl(fd, VIDIOC_S_STD, &id)) < 0) {
         qWarning() << "VIDIOC_S_STD error" << errno;
         return -1;
     }
-
-	if( id == V4L2_STD_ALL )
-	{
-		timer = new QTimer;
-   		timer->start(1000);
-    		connect(timer,SIGNAL(timeout()),this,SLOT(timer_proc()));
-	}
 
     struct v4l2_crop crop;
     struct v4l2_cropcap cropcap;
@@ -119,39 +129,4 @@ int IMXTVDCamera::subInitCapture()
 void IMXTVDCamera::textureProcess(const uchar *data, int width, int height)
 {
     m_image->uyvy2rgb(data, width, height);
-}
-
-void Camera::timer_proc()
-{
-
-	int err, fd = videodev.fd;
-    vidioc_enuminput(fd);
- 
-    v4l2_std_id id = 0;
-    if ((err = ioctl(fd, VIDIOC_G_STD, &id)) < 0) {
-        qWarning() << "VIDIOC_G_STD error" << errno;
-        return ;
-    }
-    switch (id) {
-    case V4L2_STD_ALL:
-        qDebug() << "no camera";
-        break;
-    case V4L2_STD_NTSC:
-        qDebug() << "NTSC camera detected";
-        break;
-    case V4L2_STD_PAL:
-        qDebug() << "PAL camera detected";
-        break;
-    default:
-        qDebug() << "unknown std";
-        break;
-    }
-
-    if ((err = ioctl(fd, VIDIOC_S_STD, &id)) < 0) {
-        qWarning() << "VIDIOC_S_STD error" << errno;
-        return ;
-    }
-
-	if( id != V4L2_STD_ALL )
-		timer->stop();
 }
