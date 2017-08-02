@@ -63,6 +63,7 @@ void CameraPlayer::changeChannel()
         mCamera->m_playChannel = PLAY_CHANNEL_0;
         mCamera->start();
     }
+    qDebug()<<"channel"<<mCamera->m_playChannel;
 
 }
 
